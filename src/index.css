@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 3%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 3%;
+
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 0 0% 98%;
+    --accent-foreground: 0 0% 3%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 12%;
+    --ring: 0 0% 98%;
+
+    --radius: 0.75rem;
+
+    /* Custom portfolio colors - Black & White theme */
+    --gradient-primary: linear-gradient(135deg, hsl(0 0% 98%), hsl(0 0% 85%));
+    --gradient-accent: linear-gradient(135deg, hsl(0 0% 15%), hsl(0 0% 25%));
+    --gradient-background: linear-gradient(180deg, hsl(0 0% 3%), hsl(0 0% 6%));
+    --shadow-glow: 0 0 40px hsl(0 0% 98% / 0.1);
+    --shadow-card: 0 8px 32px hsl(0 0% 0% / 0.8);
+    --shadow-elegant: 0 20px 60px hsl(0 0% 0% / 0.4);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark mode uses same colors as root for this black/white portfolio */
+    --background: 0 0% 3%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 3%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 0 0% 98%;
+    --accent-foreground: 0 0% 3%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 15%;
+    --input: 0 0% 12%;
+    --ring: 0 0% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background: var(--gradient-background);
+    overflow-x: hidden;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .floating-code {
+    animation: float 8s ease-in-out infinite;
+    opacity: 0.08;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+
+  .floating-code:nth-child(2n) {
+    animation-delay: 3s;
+  }
+
+  .floating-code:nth-child(3n) {
+    animation-delay: 6s;
+  }
+
+  .glow-effect {
+    box-shadow: var(--shadow-glow);
+    border: 1px solid hsl(0 0% 20%);
+  }
+
+  .glow-effect:hover {
+    box-shadow: var(--shadow-glow), 0 0 20px hsl(0 0% 98% / 0.2);
+    border-color: hsl(0 0% 30%);
+  }
+
+  .card-elegant {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-smooth);
+    backdrop-filter: blur(10px);
+  }
+
+  .card-elegant:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-elegant);
+    border-color: hsl(0 0% 25%);
+  }
+
+  .section-divider {
+    background: linear-gradient(90deg, transparent, hsl(0 0% 20%), transparent);
+    height: 1px;
+    margin: 4rem 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.08;
+  }
+  25% {
+    transform: translateY(-30px) rotate(8deg);
+    opacity: 0.12;
+  }
+  50% {
+    transform: translateY(-15px) rotate(-8deg);
+    opacity: 0.06;
+  }
+  75% {
+    transform: translateY(-25px) rotate(5deg);
+    opacity: 0.10;
+  }
+}
